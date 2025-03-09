@@ -7,23 +7,27 @@
 
 body {
     font-family: 'Press Start 2P', sans-serif;
-    background: linear-gradient(45deg, #f3a6e8, #6ec1e4); /* Мягкий градиент */
+    background: #f3a6e8; /* Плавный фон в один цвет */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    width: 100%;
 }
 
 .app-container {
     background-color: #fff;
     border-radius: 25px;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 80%;  /* Ограничиваем ширину контейнера */
+    max-width: 400px;  /* Максимальная ширина контейнера */
     position: relative;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.8); /* Легкий полупрозрачный фон */
+    height: 80%;  /* Ограничиваем высоту контейнера */
 }
 
 header h1 {
@@ -42,7 +46,7 @@ header p {
     margin-bottom: 20px;
 }
 
-/* Кнопка монеты */
+/* Кнопка монеты (уменьшаем размер и убираем фон) */
 .tap-button {
     background: none;
     border: none;
@@ -52,9 +56,10 @@ header p {
 }
 
 .coin-image {
-    width: 80px;
-    height: 80px;
+    width: 50px; /* Уменьшаем размер монеты */
+    height: 50px;
     transition: transform 0.3s ease;
+    object-fit: contain; /* Убираем белый фон, если он есть */
 }
 
 .tap-button:hover .coin-image {
@@ -77,7 +82,7 @@ header p {
 /* Эффект вылетающих коинов */
 .coin-fx {
     position: absolute;
-    animation: coin-flight 0.8s ease-out;
+    animation: coin-flight 1s ease-out forwards;
 }
 
 @keyframes coin-flight {
@@ -85,8 +90,12 @@ header p {
         transform: translate(0, 0);
         opacity: 1;
     }
+    50% {
+        transform: translate(0, -30px); /* Немного поднимем монету */
+        opacity: 0.7;
+    }
     100% {
-        transform: translate(0, -150px);
+        transform: translate(0, -100px); /* Полет монеты вверх */
         opacity: 0;
     }
 }
@@ -97,7 +106,7 @@ footer p {
     margin-top: 20px;
 }
 
-/* Описание анимации */
+/* Дополнительная стилизация */
 @keyframes coin-fx-animation {
     0% {
         transform: translate(0, 0);
@@ -106,5 +115,50 @@ footer p {
     100% {
         transform: translate(0, -150px);
         opacity: 0;
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    body {
+        background: #f3a6e8;  /* Обновленный фон для мобильных устройств */
+    }
+
+    .app-container {
+        width: 90%;  /* Увеличиваем ширину контейнера для мобильных устройств */
+        height: 85%; /* Увеличиваем высоту контейнера */
+    }
+
+    header h1 {
+        font-size: 24px;  /* Уменьшаем размер шрифта для мобильных устройств */
+    }
+
+    header p {
+        font-size: 12px; /* Уменьшаем размер текста для мобильных */
+    }
+
+    .coin-image {
+        width: 60px;  /* Увеличиваем размер монеты для мобильных */
+        height: 60px;
+    }
+
+    #balance {
+        font-size: 24px;  /* Уменьшаем размер баланса на мобильных устройствах */
+    }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 22px;  /* Ещё меньше размер шрифта для очень маленьких экранов */
+    }
+
+    .coin-image {
+        width: 50px;  /* Уменьшаем монету на очень маленьких экранах */
+        height: 50px;
+    }
+
+    #balance {
+        font-size: 20px;  /* Уменьшаем размер баланса */
     }
 }
