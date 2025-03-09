@@ -3,33 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лысый</title>
+    <title>Лысый WebApp</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        button { padding: 10px 20px; font-size: 20px; cursor: pointer; }
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #333333);
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            font-size: 24px;
+        }
+        #balance {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        #hit-btn {
+            background: #ff4444;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+        #hit-btn:active {
+            transform: scale(0.9);
+            background: #cc0000;
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            animation: shake 0.3s ease-in-out infinite alternate;
+        }
+        @keyframes shake {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
     </style>
 </head>
 <body>
-    <h1>Ебашь лысого!</h1>
-    <p id="balance">Баланс: 0 MongolCoin 🪙</p>
-    <button id="hit-btn">Ударить лысого</button>
+    <div class="container">
+        <h1>Ебашь лысого!</h1>
+        <img src="https://i.imgur.com/Xg0i7nW.png" alt="Лысый" class="icon">
+        <p id="balance">Баланс: 0 MongolCoin 🪙</p>
+        <button id="hit-btn">👊 Ударить лысого</button>
+    </div>
 
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand(); // Разворачиваем WebApp
 
-        // Функция обновления баланса
-        function updateBalance(balance) {
-            document.getElementById("balance").innerText = `Баланс: ${balance} MongolCoin 🪙`;
-        }
-
-        // Кнопка удара
-        document.getElementById("hit-btn").addEventListener("click", function () {
-            tg.sendData(JSON.stringify({ add_coins: 1 })); // Отправляем 1 монету в бота
-            let currentBalance = parseInt(document.getElementById("balance").innerText.match(/\d+/)[0]);
-            updateBalance(currentBalance + 1);
-        });
-    </script>
-</body>
-</html>
+        let balance = 0; // Локальный баланс
+        const balanceText = document.getElementById("balance");
+        const hit
