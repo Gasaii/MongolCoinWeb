@@ -1,34 +1,18 @@
-let tg = window.Telegram.WebApp;
-tg.expand(); // Разворачиваем WebApp
+// Initialize balance
+let currentBalance = 0;
 
-// Загружаем баланс из localStorage (если нет — ставим 0)
-let balance = localStorage.getItem("balance") ? parseInt(localStorage.getItem("balance")) : 0;
-let balanceDisplay = document.getElementById("balance");
-let mineButton = document.getElementById("mineButton");
+const balanceElement = document.getElementById("balance");
+const tapButton = document.getElementById("tapButton");
 
-// Обновляем отображение баланса
-balanceDisplay.textContent = balance;
+// Function to handle the button tap
+function handleTap() {
+    // Increment balance and update the display
+    currentBalance += 1;
+    balanceElement.textContent = currentBalance;
 
-mineButton.addEventListener("click", async (event) => {
-    event.preventDefault(); // Останавливаем стандартное поведение
+    // Notify the Telegram bot about the user's action
+    window.Telegram.WebApp.sendData('{"add_coins":1}');
+}
 
-    balance += 1;  
-    balanceDisplay.textContent = balance;
-
-    // Сохраняем баланс в localStorage
-    localStorage.setItem("balance", balance);
-
-    // **Отправляем данные в бота через сервер, а НЕ через `tg.sendData()`**
-    try {
-        await fetch("https://ВАШ_СЕРВЕР/добавить_коин", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: tg.initDataUnsafe.user.id, add_coins: 1 })
-        });
-    } catch (error) {
-        console.error("Ошибка при отправке данных:", error);
-    }
-
-    // **Принудительно раскрываем WebApp (если закроется)**
-    setTimeout(() => tg.expand(), 100);
-});
+// Attach the event listener to the button
+tapButton.addEventListener('click', handleTap);
