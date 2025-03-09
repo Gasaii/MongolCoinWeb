@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MongolCoin WebApp</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Лысый</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        button { padding: 10px 20px; font-size: 20px; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <h1>Добро пожаловать в MongolCoin WebApp!</h1>
-    <p>Нажми на кнопку, чтобы проверить работу бота.</p>
-    
-    <button id="btn">Отправить данные боту</button>
+    <h1>Ебашь лысого!</h1>
+    <p id="balance">Баланс: 0 MongolCoin 🪙</p>
+    <button id="hit-btn">Ударить лысого</button>
 
-    <script src="script.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачиваем WebApp
+
+        // Функция обновления баланса
+        function updateBalance(balance) {
+            document.getElementById("balance").innerText = `Баланс: ${balance} MongolCoin 🪙`;
+        }
+
+        // Кнопка удара
+        document.getElementById("hit-btn").addEventListener("click", function () {
+            tg.sendData(JSON.stringify({ add_coins: 1 })); // Отправляем 1 монету в бота
+            let currentBalance = parseInt(document.getElementById("balance").innerText.match(/\d+/)[0]);
+            updateBalance(currentBalance + 1);
+        });
+    </script>
 </body>
 </html>
