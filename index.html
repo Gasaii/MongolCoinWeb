@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MongolCoin WebApp</title>
+    <title>MongolCoin Tap Battle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>💰 MongolCoin</h1>
-        <p>Твой баланс: <span id="balance">0</span> 🪙</p>
-        <button id="mineButton">⛏ Добыть монету</button>
+    <div class="app-container">
+        <header>
+            <h1>💥 MongolCoin Tap Battle 💥</h1>
+            <p>Tap to earn MongolCoin and fight your way to the top!</p>
+        </header>
+
+        <section class="balance">
+            <div class="coin-container">
+                <img src="https://i.postimg.cc/65PPL1g9/653278-coin-bitcoin-cash-currency-dollar-icon.png" alt="Coin" class="coin-icon">
+                <h2 id="balance">0</h2>
+            </div>
+        </section>
+
+        <section class="action">
+            <button id="tapButton" class="tap-button">💥 Tap to Earn 1 MongolCoin</button>
+        </section>
+
+        <footer>
+            <p>🚀 Powered by MongolCoin</p>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
