@@ -18,9 +18,9 @@ mineButton.addEventListener("click", async (event) => {
     // Сохраняем баланс в localStorage
     localStorage.setItem("balance", balance);
 
-    // **Отправляем данные на сервер БЕЗ `tg.sendData()`**
+    // **Отправляем данные в бота через сервер, а НЕ через `tg.sendData()`**
     try {
-        await fetch("https://ВАШ-СЕРВЕР/добавить_коин", {
+        await fetch("https://ВАШ_СЕРВЕР/добавить_коин", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id: tg.initDataUnsafe.user.id, add_coins: 1 })
@@ -32,4 +32,3 @@ mineButton.addEventListener("click", async (event) => {
     // **Принудительно раскрываем WebApp (если закроется)**
     setTimeout(() => tg.expand(), 100);
 });
-
