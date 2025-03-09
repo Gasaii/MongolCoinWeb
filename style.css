@@ -1,34 +1,56 @@
+/* Общие стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     text-align: center;
-    background-color: #121212;
-    color: white;
+    background: linear-gradient(135deg, #1e1e2f, #121212);
+    color: #fff;
     margin: 0;
     padding: 0;
 }
 
+/* Контейнер */
 .container {
     margin-top: 50px;
+    padding: 20px;
 }
 
+/* Заголовок */
 h1 {
-    font-size: 24px;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffd700;
 }
 
+/* Баланс */
 p {
-    font-size: 18px;
+    font-size: 20px;
+    margin: 10px 0;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
+/* Кнопка "Добыть монету" */
 button {
-    background-color: #ffcc00;
+    background: linear-gradient(90deg, #ffcc00, #ffaa00);
+    color: #000;
     border: none;
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 15px 35px;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 10px;
-    transition: 0.3s;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
 }
 
+/* Анимация кнопки при наведении */
 button:hover {
-    background-color: #ffaa00;
+    background: linear-gradient(90deg, #ffaa00, #ff8800);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 136, 0, 1);
+}
+
+/* Анимация кнопки при нажатии */
+button:active {
+    transform: scale(0.95);
 }
