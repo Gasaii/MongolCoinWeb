@@ -1,21 +1,26 @@
 let tg = window.Telegram.WebApp;
 tg.expand(); 
 
-// Загружаем баланс из localStorage или ставим 0
+// Загружаем баланс из localStorage (если нет — ставим 0)
 let balance = localStorage.getItem("balance") ? parseInt(localStorage.getItem("balance")) : 0;
 let balanceDisplay = document.getElementById("balance");
 let mineButton = document.getElementById("mineButton");
 
-// Отображаем текущий баланс
+// Обновляем отображение баланса
 balanceDisplay.textContent = balance;
 
-mineButton.addEventListener("click", () => {
+mineButton.addEventListener("click", (event) => {
+    event.preventDefault(); // **Останавливаем стандартное поведение**
+
     balance += 1;  
     balanceDisplay.textContent = balance;
 
     // Сохраняем баланс в localStorage
     localStorage.setItem("balance", balance);
 
-    // Отправляем данные в бота (но без закрытия WebApp)
+    // Отправляем данные в бота **без закрытия WebApp**
     tg.sendData(JSON.stringify({ add_coins: 1 }));
+
+    // **Принудительно оставляем WebApp открытым**
+    setTimeout(() => tg.expand(), 50);
 });
