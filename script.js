@@ -29,8 +29,8 @@ function createCoinEffect() {
     const centerY = rect.top + rect.height / 2;
 
     // Устанавливаем начальную позицию монеты
-    coinFx.style.left = `${centerX - 40}px`;
-    coinFx.style.top = `${centerY - 40}px`;
+    coinFx.style.left = `${centerX - 30}px`; // Центрируем монету
+    coinFx.style.top = `${centerY - 30}px`;
 
     // Добавляем монету в DOM
     document.body.appendChild(coinFx);
@@ -38,7 +38,7 @@ function createCoinEffect() {
     // После анимации удаляем монету
     setTimeout(() => {
         coinFx.remove();
-    }, 800);
+    }, 1000);
 }
 
 // Прикрепляем обработчик события нажатия на кнопку
