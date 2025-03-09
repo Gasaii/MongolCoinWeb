@@ -1,4 +1,4 @@
-/* Reset default styles */
+/* Общие стили */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Press Start 2P', sans-serif;
-    background: linear-gradient(to right, #f06, #1f8cd8);
+    background: linear-gradient(45deg, #f3a6e8, #6ec1e4); /* Мягкий градиент */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 
 .app-container {
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 40px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -27,8 +27,8 @@ body {
 }
 
 header h1 {
-    font-size: 32px;
-    color: #ff4f81;
+    font-size: 28px;
+    color: #9b58b7;
     margin-bottom: 10px;
 }
 
@@ -38,55 +38,73 @@ header p {
     margin-bottom: 30px;
 }
 
-.coin-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
+.action {
+    margin-bottom: 20px;
 }
 
-.coin-icon {
-    width: 40px;
-    margin-right: 10px;
-    animation: spin 3s infinite linear;
-}
-
-h2#balance {
-    font-size: 36px;
-    color: #28a745;
-    font-weight: bold;
-    margin-left: 5px;
-}
-
+/* Кнопка монеты */
 .tap-button {
-    background-color: #ffcc00;
-    color: #fff;
-    font-size: 18px;
-    padding: 15px 30px;
+    background: none;
     border: none;
-    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    transition: transform 0.3s ease;
 }
 
-.tap-button:hover {
-    background-color: #f39c12;
-    transform: scale(1.1);
+.coin-image {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease;
+}
+
+.tap-button:hover .coin-image {
+    transform: scale(1.2);
+}
+
+/* Баланс */
+.balance {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+#balance {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Эффект вылетающих коинов */
+.coin-fx {
+    position: absolute;
+    animation: coin-flight 0.8s ease-out;
+}
+
+@keyframes coin-flight {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -150px);
+        opacity: 0;
+    }
 }
 
 footer p {
     font-size: 12px;
     color: #aaa;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
-@keyframes spin {
+/* Описание анимации */
+@keyframes coin-fx-animation {
     0% {
-        transform: rotate(0deg);
+        transform: translate(0, 0);
+        opacity: 1;
     }
     100% {
-        transform: rotate(360deg);
+        transform: translate(0, -150px);
+        opacity: 0;
     }
 }
