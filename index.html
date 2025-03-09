@@ -11,11 +11,16 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #1e1e1e, #333333);
             color: white;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
+            width: 90%;
             max-width: 400px;
-            margin: auto;
             padding: 20px;
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.5);
@@ -37,16 +42,81 @@
             cursor: pointer;
             border-radius: 10px;
             transition: 0.2s;
+            width: 100%;
         }
         #hit-btn:active {
             transform: scale(0.9);
             background: #cc0000;
         }
         .icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             margin: 20px auto;
             animation: shake 0.3s ease-in-out infinite alternate;
         }
         @keyframes shake {
-            from { transform: rotate(-5deg);
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+
+        /* Адаптация для ПК */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            #balance {
+                font-size: 24px;
+            }
+            #hit-btn {
+                font-size: 22px;
+                padding: 20px;
+            }
+            .icon {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ебашь лысого!</h1>
+        <img src="https://i.imgur.com/Xg0i7nW.png" alt="Лысый" class="icon">
+        <p id="balance">Баланс: 0 MongolCoin 🪙</p>
+        <button id="hit-btn">👊 Ударить лысого</button>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачиваем WebApp (не даём закрыться)
+        tg.MainButton.setParams({ is_visible: true }); // Отключаем авто-закрытие
+
+        let balance = 0; // Локальный баланс
+        const balanceText = document.getElementById("balance");
+        const hitButton = document.getElementById("hit-btn");
+
+        // Функция обновления баланса
+        function updateBalance() {
+            balanceText.innerText = `Баланс: ${balance} MongolCoin 🪙`;
+        }
+
+        // Кнопка удара
+        hitButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Останавливаем закрытие WebApp
+            
+            balance++;
+            updateBalance();
+
+            // Отправляем данные в бота
+            tg.sendData(JSON.stringify({ add_coins: 1 }));
+
+            // Визуальный эффект кнопки
+            hitButton.style.transform = "scale(0.95)";
+            setTimeout(() => { hitButton.style.transform = "scale(1)"; }, 100);
+        });
+    </script>
+</body>
+</html>
