@@ -3,46 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MongolCoin</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background: gold;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <title>MongolCoin WebApp</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h1>MongolCoin Wallet</h1>
-    <p>Твой баланс: <span id="balance">0</span> 🪙</p>
-    <button onclick="sendMessage()">Пополнить баланс</button>
+    <h1>Добро пожаловать в MongolCoin WebApp!</h1>
+    <p>Нажми на кнопку, чтобы проверить работу бота.</p>
+    
+    <button id="btn">Отправить данные боту</button>
 
-    <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand(); // Развернуть WebApp
-
-        // Функция для получения баланса от бота
-        function getBalance() {
-            fetch("https://твоя_ссылка_на_сервер/get_balance?user_id=" + tg.initDataUnsafe.user.id)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("balance").innerText = data.balance;
-                });
-        }
-
-        // Отправка команды боту
-        function sendMessage() {
-            tg.sendData("tap"); // Отправка данных в бота
-        }
-
-        getBalance(); // Загружаем баланс при запуске
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
