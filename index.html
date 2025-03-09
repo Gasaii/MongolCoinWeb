@@ -49,27 +49,4 @@
             animation: shake 0.3s ease-in-out infinite alternate;
         }
         @keyframes shake {
-            from { transform: rotate(-5deg); }
-            to { transform: rotate(5deg); }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Ебашь лысого!</h1>
-        <img src="https://i.imgur.com/Xg0i7nW.png" alt="Лысый" class="icon">
-        <p id="balance">Баланс: 0 MongolCoin 🪙</p>
-        <button id="hit-btn">👊 Ударить лысого</button>
-    </div>
-
-    <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачиваем WebApp (не даём закрыться)
-
-        let balance = 0; // Локальный баланс
-        const balanceText = document.getElementById("balance");
-        const hitButton = document.getElementById("hit-btn");
-
-        // Функция обновления баланса
-        function updateBalance() {
- 
+            from { transform: rotate(-5deg);
