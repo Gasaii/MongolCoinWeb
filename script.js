@@ -1,12 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let tg = window.Telegram.WebApp; // Подключаем WebApp API
+let tg = window.Telegram.WebApp; 
+tg.expand(); 
 
-    tg.expand(); // Разворачиваем WebApp на весь экран
+let balance = 0;
+let balanceDisplay = document.getElementById("balance");
+let mineButton = document.getElementById("mineButton");
 
-    document.getElementById("btn").addEventListener("click", function () {
-        let data = { action: "get_balance" }; // Данные для бота
+mineButton.addEventListener("click", () => {
+    balance += 1;  
+    balanceDisplay.textContent = balance;  
 
-        tg.sendData(JSON.stringify(data)); // Отправляем JSON-объект в бота
-        tg.close(); // Закрываем WebApp после отправки
-    });
+    // Отправка данных в Telegram бота
+    tg.sendData(JSON.stringify({ add_coins: 1 }));
 });
