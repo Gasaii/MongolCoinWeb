@@ -68,4 +68,25 @@
 
         let balance = 0; // Локальный баланс
         const balanceText = document.getElementById("balance");
-        const hit
+        const hitButton = document.getElementById("hit-btn");
+
+        // Функция обновления баланса
+        function updateBalance() {
+            balanceText.innerText = `Баланс: ${balance} MongolCoin 🪙`;
+        }
+
+        // Кнопка удара
+        hitButton.addEventListener("click", function () {
+            balance++;
+            updateBalance();
+
+            // Отправляем данные в бота
+            tg.sendData(JSON.stringify({ add_coins: 1 }));
+
+            // Визуальный эффект кнопки
+            hitButton.style.transform = "scale(0.95)";
+            setTimeout(() => { hitButton.style.transform = "scale(1)"; }, 100);
+        });
+    </script>
+</body>
+</html>
