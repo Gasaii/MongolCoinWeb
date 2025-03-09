@@ -1,56 +1,92 @@
-/* Общие стили */
-body {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    background: linear-gradient(135deg, #1e1e2f, #121212);
-    color: #fff;
+/* Reset default styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Контейнер */
-.container {
-    margin-top: 50px;
-    padding: 20px;
+body {
+    font-family: 'Press Start 2P', sans-serif;
+    background: linear-gradient(to right, #f06, #1f8cd8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Заголовок */
-h1 {
-    font-size: 28px;
-    text-transform: uppercase;
+.app-container {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #ff4f81;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.coin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.coin-icon {
+    width: 40px;
+    margin-right: 10px;
+    animation: spin 3s infinite linear;
+}
+
+h2#balance {
+    font-size: 36px;
+    color: #28a745;
     font-weight: bold;
-    text-shadow: 0 0 10px #ffd700;
+    margin-left: 5px;
 }
 
-/* Баланс */
-p {
-    font-size: 20px;
-    margin: 10px 0;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-/* Кнопка "Добыть монету" */
-button {
-    background: linear-gradient(90deg, #ffcc00, #ffaa00);
-    color: #000;
+.tap-button {
+    background-color: #ffcc00;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 30px;
     border: none;
-    padding: 15px 35px;
-    font-size: 20px;
-    font-weight: bold;
+    border-radius: 25px;
     cursor: pointer;
-    border-radius: 12px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Анимация кнопки при наведении */
-button:hover {
-    background: linear-gradient(90deg, #ffaa00, #ff8800);
+.tap-button:hover {
+    background-color: #f39c12;
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 136, 0, 1);
 }
 
-/* Анимация кнопки при нажатии */
-button:active {
-    transform: scale(0.95);
+footer p {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 30px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
