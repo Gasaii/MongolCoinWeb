@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MongolCoin Tap Battle</title>
+    <title>Mongol Coin Tap</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
         <header>
-            <h1>💥 MongolCoin Tap Battle 💥</h1>
-            <p>Tap to earn MongolCoin and fight your way to the top!</p>
+            <h1>🌸 Mongol Coin Tap 🌸</h1>
+            <p>Tap the coin to earn MongolCoins!</p>
         </header>
 
-        <section class="balance">
-            <div class="coin-container">
-                <img src="https://i.postimg.cc/65PPL1g9/653278-coin-bitcoin-cash-currency-dollar-icon.png" alt="Coin" class="coin-icon">
-                <h2 id="balance">0</h2>
-            </div>
+        <!-- Кнопка для нажатия (Монета) -->
+        <section class="action">
+            <button id="tapButton" class="tap-button">
+                <img src="https://i.postimg.cc/1tLVthMj/2203534-cash-coin-money-value-icon.png" alt="Coin" class="coin-image">
+            </button>
         </section>
 
-        <section class="action">
-            <button id="tapButton" class="tap-button">💥 Tap to Earn 1 MongolCoin</button>
+        <!-- Баланс пользователя -->
+        <section class="balance">
+            <p id="balance">0</p>
         </section>
 
         <footer>
-            <p>🚀 Powered by MongolCoin</p>
+            <p>🌸 Powered by MongolCoin</p>
         </footer>
     </div>
 
